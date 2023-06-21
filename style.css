@@ -89,6 +89,10 @@ input {
     align-content: center;
 }
 
+input {
+    text-align: center;
+}
+
 .error {
     border-color: red;
 }
