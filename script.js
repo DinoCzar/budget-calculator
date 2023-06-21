@@ -117,16 +117,23 @@ function loadPage() {
 }
 
 function calculateValues(totalSales, driverHours) {
-	cardValue = 100;
-	managerHrsValue = 100;
-	budgetValue = 100;
-	monthPayValue = 100;
-	weekPayValue = totalSales/2;
-	hourPayValue = 100;
-	onCallValue = totalSales;
-	deliveryValue = driverHours;
-	inventoryValue = 100;
-	hoursValue = 100;
+	cardValue = Math.ceil(totalSales*.3);
+	managerHrsValue = 80.5-driverHours;
+    let driverRate = 18.75;
+    let operatingExp = 7602;
+    let salesTax = cardValue*.14;
+    let cogs = totalSales*.453;
+    let percentage = 0.9;
+    let rem = (totalSales+(cardValue*.073))-(operatingExp+salesTax+cogs);
+    let driverMonthHrs = ((driverHours/7)*363)/12;
+	budgetValue = Math.ceil(rem-((rem-(driverMonthHrs*driverRate))*(1-percentage)));
+	monthPayValue = Math.ceil(budgetValue-(driverMonthHrs*driverRate));
+	weekPayValue = Math.ceil(((monthPayValue*12)/363)*7);
+	onCallValue = managerHrsValue/2;
+	deliveryValue = onCallValue;
+	inventoryValue = 10;
+	hoursValue = onCallValue+deliveryValue+inventoryValue;
+    hourPayValue = (weekPayValue/hoursValue).toFixed(2);
     displayValues(cardValue, managerHrsValue, budgetValue, monthPayValue, weekPayValue, hourPayValue,
         onCallValue, deliveryValue, inventoryValue, hoursValue, totalSales, driverHours);
 }
