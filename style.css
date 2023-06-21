@@ -21,8 +21,6 @@ body {
 
 .top-section,
 .bottom-section {
-    border: solid;
-    border-width: 1px;
     display: grid;
     background-color: lightgrey;
 }
@@ -37,8 +35,6 @@ body {
 
 #button-section {
     background-color: black;
-    border: solid;
-    border-width: 2px;
     display: grid;
     align-items: center;
     justify-items: center;
