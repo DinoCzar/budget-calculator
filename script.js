@@ -18,16 +18,27 @@ const reset = document.getElementById('reset');
 const inputValues = document.querySelectorAll('input');
 const outputValues = document.querySelectorAll('.display');
 
-card.textContent = 'test';
-managerHrs.textContent = 'test';
-budget.textContent = 'test';
-monthPay.textContent = 'test';
-weekPay.textContent = 'test';
-hourPay.textContent = 'test';
-onCall.textContent = 'test';
-delivery.textContent = 'test';
-inventory.textContent = 'test';
-hours.textContent = 'test';
+let cardValue;
+let managerHrsValue;
+let budgetValue;
+let monthPayValue;
+let weekPayValue;
+let hourPayValue;
+let onCallValue;
+let deliveryValue;
+let inventoryValue;
+let hoursValue;
+
+card.textContent = cardValue;
+managerHrs.textContent = managerHrsValue;
+budget.textContent = budgetValue;
+monthPay.textContent = monthPayValue;
+weekPay.textContent = weekPayValue;
+hourPay.textContent = hourPayValue;
+onCall.textContent = onCallValue;
+delivery.textContent = deliveryValue;
+inventory.textContent = inventoryValue;
+hours.textContent = hoursValue;
 
 function showError(input) {
 	input.classList.add('error');
