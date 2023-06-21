@@ -6,11 +6,11 @@ body {
 
 #container {
 	width: 275px;
-	height: 500px;
+	height: 550px;
 	border: solid;
 	border-width: 2px;
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 50px 1fr 2fr;
 }
 
 #top,
@@ -32,6 +32,35 @@ body {
 
 .bottom-section {
     grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#button-section {
+    border: solid;
+    border-width: 2px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.button-div {
+    display: grid;
+}
+
+button {
+    border-radius: 10px;
+    padding: 8px;
+    width: 85px;
+    border: none;
+}
+
+#generate {
+    background-color: limegreen;
+}
+
+#reset {
+    background-color: black;
+    color: limegreen;
 }
 
 .data {
@@ -64,4 +93,3 @@ input {
     display: grid;
     margin-top: 10px;
 }
-
