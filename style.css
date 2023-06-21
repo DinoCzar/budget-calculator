@@ -6,11 +6,11 @@ body {
 
 #container {
 	width: 275px;
-	height: 550px;
+	height: 565px;
 	border: solid;
 	border-width: 2px;
     display: grid;
-    grid-template-rows: 50px 1fr 2fr;
+    grid-template-rows: 65px 1fr 2fr;
 }
 
 #top,
@@ -50,7 +50,7 @@ body {
 button {
     border-radius: 10px;
     padding: 8px;
-    width: 85px;
+    width: 100px;
     border: none;
 }
 
