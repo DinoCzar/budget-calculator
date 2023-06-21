@@ -15,6 +15,9 @@ const driversInput = document.getElementById('drivers-input');
 const generate = document.getElementById('generate');
 const reset = document.getElementById('reset');
 
+const inputValues = document.querySelectorAll('input');
+const outputValues = document.querySelectorAll('.display');
+
 card.textContent = 'test';
 managerHrs.textContent = 'test';
 budget.textContent = 'test';
@@ -39,7 +42,7 @@ function validateSales() {
 	if (!salesInputValue) {
 		showError(salesInput);
 	} else {
-		showSuccess(salesInput)
+		showSuccess(salesInput);
 	}
 }
 
@@ -48,7 +51,7 @@ function validateHours() {
 	if (!driversInputValue) {
 		showError(driversInput);
 	} else {
-		showSuccess(driversInput)
+		showSuccess(driversInput);
 	}
 }
 
@@ -64,5 +67,14 @@ function validateForm() {
 }
 
 generate.addEventListener('click', () => {
-    validateForm();
+	validateForm();
+});
+
+reset.addEventListener('click', () => {
+	inputValues.forEach(function (item) {
+		item.value = '';
+	});
+	outputValues.forEach(function (item) {
+		item.textContent = '';
+	});
 });
