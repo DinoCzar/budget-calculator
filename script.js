@@ -79,12 +79,6 @@ function validateHours() {
 function validateForm() {
 	validateSales();
 	validateHours();
-
-	const errors = document.querySelectorAll('.error');
-
-	if (errors.length === 0) {
-		console.log('populate driver pay values');
-	}
 }
 
 generate.addEventListener('click', () => {
@@ -124,7 +118,7 @@ function calculateValues(totalSales, driverHours) {
     let salesTax = cardValue*.14;
     let cogs = totalSales*.453;
     let percentage = 0.9;
-    let rem = (totalSales+(cardValue*.073))-(operatingExp+salesTax+cogs);
+    let rem = (Number(totalSales) + (cardValue*.073))-(operatingExp+salesTax+cogs);
     let driverMonthHrs = ((driverHours/7)*363)/12;
 	budgetValue = Math.ceil(rem-((rem-(driverMonthHrs*driverRate))*(1-percentage)));
 	monthPayValue = Math.ceil(budgetValue-(driverMonthHrs*driverRate));
@@ -132,7 +126,7 @@ function calculateValues(totalSales, driverHours) {
 	onCallValue = managerHrsValue/2;
 	deliveryValue = onCallValue;
 	inventoryValue = 10;
-	hoursValue = onCallValue+deliveryValue+inventoryValue;
+	hoursValue = (deliveryValue+inventoryValue).toFixed(2);
     hourPayValue = (weekPayValue/hoursValue).toFixed(2);
     displayValues(cardValue, managerHrsValue, budgetValue, monthPayValue, weekPayValue, hourPayValue,
         onCallValue, deliveryValue, inventoryValue, hoursValue, totalSales, driverHours);
