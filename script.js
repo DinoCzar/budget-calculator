@@ -18,6 +18,11 @@ const reset = document.getElementById('reset');
 const inputValues = document.querySelectorAll('input');
 const outputValues = document.querySelectorAll('.display');
 
+const inputObject = {
+	sales: undefined,
+	hours: undefined,
+};
+
 let cardValue;
 let managerHrsValue;
 let budgetValue;
@@ -29,16 +34,21 @@ let deliveryValue;
 let inventoryValue;
 let hoursValue;
 
-card.textContent = cardValue;
-managerHrs.textContent = managerHrsValue;
-budget.textContent = budgetValue;
-monthPay.textContent = monthPayValue;
-weekPay.textContent = weekPayValue;
-hourPay.textContent = hourPayValue;
-onCall.textContent = onCallValue;
-delivery.textContent = deliveryValue;
-inventory.textContent = inventoryValue;
-hours.textContent = hoursValue;
+function displayValues(cardValue, managerHrsValue, budgetValue, monthPayValue, weekPayValue, hourPayValue,
+    onCallValue, deliveryValue, inventoryValue, hoursValue, totalSales, driverHours) {
+	card.textContent = cardValue;
+	managerHrs.textContent = managerHrsValue;
+	budget.textContent = budgetValue;
+	monthPay.textContent = monthPayValue;
+	weekPay.textContent = weekPayValue;
+	hourPay.textContent = hourPayValue;
+	onCall.textContent = onCallValue;
+	delivery.textContent = deliveryValue;
+	inventory.textContent = inventoryValue;
+	hours.textContent = hoursValue;
+    salesInput.value = totalSales;
+    driversInput.value = driverHours;
+}
 
 function showError(input) {
 	input.classList.add('error');
@@ -79,6 +89,8 @@ function validateForm() {
 
 generate.addEventListener('click', () => {
 	validateForm();
+	store(salesInput.value, driversInput.value);
+	loadPage();
 });
 
 reset.addEventListener('click', () => {
@@ -89,3 +101,33 @@ reset.addEventListener('click', () => {
 		item.textContent = '';
 	});
 });
+
+function store(salesValue, hoursValue) {
+	inputObject.sales = salesValue;
+	inputObject.hours = hoursValue;
+	localStorage.setItem('inputObject', JSON.stringify(inputObject));
+}
+
+function loadPage() {
+    const inputObject = JSON.parse(localStorage.getItem('inputObject'));
+	if (inputObject !== null) {
+        calculateValues(inputObject.sales, inputObject.hours);
+	}
+}
+
+function calculateValues(totalSales, driverHours) {
+	cardValue = 100;
+	managerHrsValue = 100;
+	budgetValue = 100;
+	monthPayValue = 100;
+	weekPayValue = totalSales/2;
+	hourPayValue = 100;
+	onCallValue = totalSales;
+	deliveryValue = driverHours;
+	inventoryValue = 100;
+	hoursValue = 100;
+    displayValues(cardValue, managerHrsValue, budgetValue, monthPayValue, weekPayValue, hourPayValue,
+        onCallValue, deliveryValue, inventoryValue, hoursValue, totalSales, driverHours);
+}
+
+loadPage();
