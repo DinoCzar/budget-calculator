@@ -1,6 +1,4 @@
-const sales = document.getElementById('sales');
 const card = document.getElementById('card');
-const driverHrs = document.getElementById('driver-hrs');
 const managerHrs = document.getElementById('manager-hrs');
 const budget = document.getElementById('budget');
 const monthPay = document.getElementById('month-pay');
@@ -11,9 +9,10 @@ const delivery = document.getElementById('delivery');
 const inventory = document.getElementById('inventory');
 const hours = document.getElementById('hours');
 
-sales.textContent = 'test';
+const salesInput = document.getElementById('sales-input');
+const driversInput = document.getElementById('drivers-input');
+
 card.textContent = 'test';
-driverHrs.textContent = 'test';
 managerHrs.textContent = 'test';
 budget.textContent = 'test';
 monthPay.textContent = 'test';
