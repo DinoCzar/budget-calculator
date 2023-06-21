@@ -89,6 +89,10 @@ input {
     align-content: center;
 }
 
+.error {
+    border-color: red;
+}
+
 .label {
     display: grid;
     margin-top: 10px;

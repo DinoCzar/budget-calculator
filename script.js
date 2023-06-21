@@ -12,6 +12,9 @@ const hours = document.getElementById('hours');
 const salesInput = document.getElementById('sales-input');
 const driversInput = document.getElementById('drivers-input');
 
+const generate = document.getElementById('generate');
+const reset = document.getElementById('reset');
+
 card.textContent = 'test';
 managerHrs.textContent = 'test';
 budget.textContent = 'test';
@@ -22,3 +25,44 @@ onCall.textContent = 'test';
 delivery.textContent = 'test';
 inventory.textContent = 'test';
 hours.textContent = 'test';
+
+function showError(input) {
+	input.classList.add('error');
+}
+
+function showSuccess(input) {
+	input.classList.remove('error');
+}
+
+function validateSales() {
+	const salesInputValue = salesInput.value.trim();
+	if (!salesInputValue) {
+		showError(salesInput);
+	} else {
+		showSuccess(salesInput)
+	}
+}
+
+function validateHours() {
+	const driversInputValue = driversInput.value.trim();
+	if (!driversInputValue) {
+		showError(driversInput);
+	} else {
+		showSuccess(driversInput)
+	}
+}
+
+function validateForm() {
+	validateSales();
+	validateHours();
+
+	const errors = document.querySelectorAll('.error');
+
+	if (errors.length === 0) {
+		console.log('populate driver pay values');
+	}
+}
+
+generate.addEventListener('click', () => {
+    validateForm();
+});
