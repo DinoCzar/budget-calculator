@@ -100,6 +100,7 @@ reset.addEventListener('click', () => {
 	outputValues.forEach(function (item) {
 		item.textContent = '';
 	});
+    store(0, 0)
 });
 
 function store(salesValue, hoursValue) {
