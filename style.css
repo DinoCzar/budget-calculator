@@ -49,6 +49,7 @@ button {
     padding: 8px;
     width: 100px;
     border: none;
+    color: black;
 }
 
 #generate {
